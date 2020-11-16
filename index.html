@@ -14,7 +14,7 @@
 
    <section>
       <div class="container">
-         <div class="cart">
+         <div id="cart-page" class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
                <div class="cart-item">
                   <div class="row">
@@ -27,11 +27,11 @@
                         <div class="input-group number-spinner">
                            <!-- <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button> -->
                            <button onclick="handleProductChange('phone', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+                           <input id="phone-count" type="text" class="form-control text-center" value="0">
                            <!-- <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button> -->
                            <button onclick="handleProductChange('phone', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5 id="phone-total">$1219</h5>
+                        <h5 id="phone-total">$0</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -47,11 +47,11 @@
                         <div class="input-group number-spinner">
                            <!-- <button id="caseMinus" class="btn btn-default"><i class="fas fa-minus"></i></button> -->
                            <button onclick="handleProductChange('case', false);" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="case-count" type="text" class="form-control text-center" value="1">
+                           <input id="case-count" type="text" class="form-control text-center" value="0">
                            <!-- <button id="casePlus" class="btn btn-default"><i class="fas fa-plus"></i></button> -->
                            <button onclick="handleProductChange('case', true);" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$<span id="case-total">59</span></h5>
+                        <h5 id="case-total">$0</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -67,16 +67,19 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5 id="total-price">$0</h5>
+                        <h5 id="tax-amount">$0</h5>
+                        <h5 id="grand-total">$0</h5>
                      </div>
                   </div>
                </div>
                <div class="col-md-12 pt-4 pb-4">
-                  <button type="button" class="btn btn-success check-out">Check Out</button>
+                  <button id="check-out" type="button" class="btn btn-success check-out">Check Out</button>
                </div>
             </div>
+         </div>
+         <div id="thank-you-page" class="thank-you">
+            <h2>Thanks For Your Purchase!</h2>
          </div>
       </div>
    </section>

@@ -11,8 +11,9 @@
 // });
 
 function handleProductChange (product, isIncrease){
-    const productInput = document.getElementById(product + "-count");
-    const productCount = parseInt(productInput.value);
+    // const productInput = document.getElementById(product + "-count");
+    // const productCount = parseInt(productInput.value);
+    const productCount = getInputValue (product);
     // const valueNewCount = valueCount - 1;
     let productNewCount = productCount; // let = will change this value.
     if(isIncrease == true){
@@ -21,7 +22,7 @@ function handleProductChange (product, isIncrease){
     if(isIncrease == false && productCount > 0){
         productNewCount = productCount - 1;
     }
-    productInput.value = productNewCount;
+    document.getElementById(product + '-count').value = productNewCount;
     // const unitTotal = productNewCount * 1219;
     let productTotal = 0;
     if(product == 'phone'){
@@ -32,7 +33,46 @@ function handleProductChange (product, isIncrease){
     }
 
     document.getElementById(product + "-total").innerText = '$' + productTotal;
+    calculateTotal();
 }
+
+function calculateTotal(){
+    // const phoneInput = document.getElementById("phone-count");
+    // const phoneCount = parseInt(phoneInput.value);
+    const phoneCount = getInputValue('phone');
+
+    // const caseInput = document.getElementById("case-count");
+    // const caseCount = parseInt(caseInput.value);
+    const caseCount = getInputValue('case');
+
+    const totalPrice = phoneCount * 1219 + caseCount * 59;
+    // const totalPrice = getInputValue(product) * 1219 + caseCount * 59;
+    document.getElementById("total-price").innerText=  '$' + totalPrice;
+
+    //Calculate Tax
+    // const tax = (totalPrice * 0.1).toFixed(0);
+    const tax = Math.round(totalPrice * 0.1);
+    const toaxTotal = document.getElementById('tax-amount').innerText = '$' + tax;
+    //Grand Total
+    const grandTotal = totalPrice + tax;
+    document.getElementById('grand-total').innerText = '$' + grandTotal;
+}
+
+function getInputValue (product){
+    // console.log(product);
+    const productInput = document.getElementById(product + "-count");
+    const productCount = parseInt(productInput.value);
+    return productCount;
+}
+
+//check put page hide after purchasing.
+document.getElementById("check-out").addEventListener("click", function(){
+    // console.log("Clicked!");
+    //Cart Page
+    document.getElementById("cart-page").style.display = "none";
+    //Thank you page
+    document.getElementById("thank-you-page").style.display = "block";
+});
 
 // function handlePhoneChange(isIncrease){
 //     const valueInput = document.getElementById("quantity");
